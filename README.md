@@ -61,18 +61,23 @@ Deploying the YAML configuration for an Ingress resource alone will not be suffi
   - Using the Helm approach, according to the official guide;
      - Install Nginx Ingress Controller in the ingress-nginx namespace:
        
-       ` helm upgrade --install ingress-nginx ingress-nginx \
+       ```
+         helm upgrade --install ingress-nginx ingress-nginx \
          --repo https://kubernetes.github.io/ingress-nginx \
-         --namespace ingress-nginx --create-namespace `
+         --namespace ingress-nginx --create-namespace 
+         
+       ```
          
       - A few pods should start in the ingress-nginx namespace: `kubectl get pods --namespace=ingress-nginx`
       
       - After a while, they should all be running. The following command will wait for the ingress controller pod to be up, running, and ready:
 
-       `kubectl wait --namespace ingress-nginx \
-  --for=condition=ready pod \
-  --selector=app.kubernetes.io/component=controller \
-  --timeout=120s`
+       ```
+       kubectl wait --namespace ingress-nginx \
+         --for=condition=ready pod \
+         --selector=app.kubernetes.io/component=controller \
+         --timeout=120s
+      ```
     
     - Check to see the created load balancer in AWS: `kubectl get service -n ingress-nginx`
     
@@ -86,6 +91,40 @@ Deploying the YAML configuration for an Ingress resource alone will not be suffi
 
    ## Deploy Artifactory Ingress
    
+   - Now, it is time to configure the ingress so that we can route traffic to the Artifactory internal service, through the ingress controller’s load balancer.
+```
+ apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: artifactory
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "tooling.artifactory.sandbox.svc.gbaderobusola.click"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-artifactory
+            port:
+              number: 8082 
+ ```
+
+![cu9](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/2fdbf4c2-3164-43a9-b509-77e9061cd9fb)
+
+
+  - The spec section,the configuration selects the ingress controller using the ingressClassName
+
+  - Run the command `kubectl apply -f p.25.yaml -n tools`
+  
+  ![cu8](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/9d48c02d-a950-430a-84d6-cf125615cd7a)
+
+## Configure DNS
+
+
+
    
 
 
