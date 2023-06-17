@@ -139,6 +139,23 @@ spec:
 
 ![cu12](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/2547490d-1fdd-49de-bf28-ea4356621e86)
 
+## Explore Artifactory Web UI
+  - Now that we can access the application externally, although insecure, its time to login for some exploration. Afterwards we will make it a lot more secure and     access our web application on any browser.
+  - Get the default username and password – Run a helm command to output the same message after the initial install:`helm test artifactory -n tools`
+  
+  ![cu13](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/105dc230-7e96-4196-a1c8-5e8d94676003)
+
+  - Insert the username and password to load the Get Started page
+  
+  ![cu14](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/e4ece503-2770-4f20-bfa2-320be07a1937)
+  - Reset the admin password
+  - Activate the Artifactory License. You will need to purchase a license to use Artifactory enterprise features.For learning purposes, you can apply for a free trial license. https://jfrog.com/start-free/ and a license key will be delivered to your email in few minutes.
+  - In exactly 1 minute, the license key had arrived. Simply copy the key and apply to the console.
+  ![cu16](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/80b29c84-fbad-4a68-9cf7-4aab3d9acf99)
+  ![cu15](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/09134e91-0851-4d29-9fa7-4e2ca01b8330)
+  - finish the setup and its time to fix the TLS/SSL configuration so that we will have a trusted HTTPS URL
+
+### DEPLOYING CERT-MANAGER AND MANAGING TLS/SSL FOR INGRESS
 
    
 
