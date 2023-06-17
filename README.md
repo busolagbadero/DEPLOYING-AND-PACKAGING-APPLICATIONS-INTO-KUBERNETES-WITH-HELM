@@ -123,6 +123,21 @@ spec:
 
 ## Configure DNS
 
+- If anyone were to visit the tool, it would be very inconvenient sharing the long load balancer address. Ideally, you would create a DNS record that is human readable and can direct request to the balancer. This is exactly what has been configured in the ingress object - host: "tooling.artifactory.sandbox.svc.gbaderobusola.click" but without a DNS record, there is no way that host address can reach the load balancer.The sandbox.svc.gbaderobusola.click part of the domain is the configured HOSTED ZONE in AWS. So you will need to configure Hosted Zone in AWS console or as part of your infrastructure as code using terraform.
+
+  ### Create Route53 record
+     
+     - (AWS Alias) In the create record section, type in the record name, and toggle the alias button to enable an alias. An alias is of the A DNS record type            which basically routes directly to the load balancer. In the choose endpoint bar, select Alias to Application and Classic Load Balancer.
+     - Select the region and the load balancer required. You will not need to type in the load balancer, as it will already populate.
+
+![cu11](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/80ec42f7-7c8d-4ff0-8af4-4bb79723a1a8)
+
+
+ ## Visiting the application from the browser
+ 
+   - So far, we now have an application running in Kubernetes that is also accessible externally. That means if you navigate to https://tooling.artifactory.sandbox.svc.gbaderobusola.click/ , it should load up the artifactory application.Using Chrome browser will show something like the below. It shows that the site is indeed reachable, but insecure. This is because Chrome browsers do not load insecure sites by default. It is insecure because it either does not have a trusted TLS/SSL certificate, or it doesn’t have any at all.
+
+![cu12](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/2547490d-1fdd-49de-bf28-ea4356621e86)
 
 
    
