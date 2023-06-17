@@ -177,7 +177,18 @@ spec:
 
 ### CONFIGURING INGRESS FOR TLS
 - To ensure that every created ingress also has TLS configured, we will need to update the ingress manifest with TLS specific configurations.
+![re](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/a0d5c7ce-a698-4d1a-9e8a-c2e3b475c16d)
 
+- Once deployed, you can run the following commands to see each resource at each phase.
+   - kubectl get certificaterequest
+   - kubectl get order
+   - kubectl get challenge
+   - kubectl get certificate
+
+![cu20](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/b3b61917-a3ab-4f43-83e6-a31620b7e9c9)
+
+- Now head over to the browser, you should see the padlock sign without warnings of untrusted certificates.
+![cu21](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/5069a8e0-ce31-4890-a672-cf08f83c62f0)
 
 
 
