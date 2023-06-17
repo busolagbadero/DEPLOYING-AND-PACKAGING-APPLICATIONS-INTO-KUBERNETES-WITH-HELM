@@ -53,3 +53,40 @@ Deploying the YAML configuration for an Ingress resource alone will not be suffi
    -  Unlike other controllers, such as the Node Controller, Replica Controller, Deployment Controller, Job Controller, or Cloud Controller, which are    automatically started with the cluster as part of the kube-controller-manager, Ingress controllers do not start automatically. 
 
   - Therefore, to enable the functionality of the Ingress resource, you need to separately deploy and configure an Ingress controller in the cluster. The Ingress    controller is responsible for interpreting and implementing the rules defined in the Ingress resource, handling traffic routing, load balancing, and other        related tasks.
+
+## Deploy Nginx Ingress Controller
+   
+   - In this project, we will be deploying and utilizing the Nginx Ingress Controller, which is often the default choice for Kubernetes projects. It is a reliable     and user-friendly option.As the Nginx Ingress Controller is maintained by Kubernetes, it is recommended to follow the official installation guide provided by     Kubernetes for this purpose. While there may be ready-to-use charts available on artifacthub.io, in this scenario, it is advisable to rely on the official         guide for consistency and reliability.
+
+  - Using the Helm approach, according to the official guide;
+     - Install Nginx Ingress Controller in the ingress-nginx namespace:
+       
+       ` helm upgrade --install ingress-nginx ingress-nginx \
+         --repo https://kubernetes.github.io/ingress-nginx \
+         --namespace ingress-nginx --create-namespace `
+         
+      - A few pods should start in the ingress-nginx namespace: `kubectl get pods --namespace=ingress-nginx`
+      
+      - After a while, they should all be running. The following command will wait for the ingress controller pod to be up, running, and ready:
+
+       `kubectl wait --namespace ingress-nginx \
+  --for=condition=ready pod \
+  --selector=app.kubernetes.io/component=controller \
+  --timeout=120s`
+    
+    - Check to see the created load balancer in AWS: `kubectl get service -n ingress-nginx`
+    
+    - The ingress-nginx-controller service that was created is of the type LoadBalancer. That will be the load balancer to be used by all applications which             require external access, and is using this ingress controller.
+    
+    - Check the IngressClass that identifies this ingress controller. `kubectl get ingressclass -n ingress-nginx`
+      
+![sa1](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/03782e67-d20f-43e2-b33c-73753bb26292)
+
+![cu6](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/1c8c7628-556f-4e21-9f50-8c8da7821658)
+
+   ## Deploy Artifactory Ingress
+   
+   
+
+
+       
