@@ -150,9 +150,10 @@ spec:
   ![cu14](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/e4ece503-2770-4f20-bfa2-320be07a1937)
   - Reset the admin password
   - Activate the Artifactory License. You will need to purchase a license to use Artifactory enterprise features.For learning purposes, you can apply for a free trial license. https://jfrog.com/start-free/ and a license key will be delivered to your email in few minutes.
+   ![cu15](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/09134e91-0851-4d29-9fa7-4e2ca01b8330)
   - In exactly 1 minute, the license key had arrived. Simply copy the key and apply to the console.
   ![cu16](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/80b29c84-fbad-4a68-9cf7-4aab3d9acf99)
-  ![cu15](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/09134e91-0851-4d29-9fa7-4e2ca01b8330)
+ 
   - finish the setup and its time to fix the TLS/SSL configuration so that we will have a trusted HTTPS URL
 
 ### DEPLOYING CERT-MANAGER AND MANAGING TLS/SSL FOR INGRESS
