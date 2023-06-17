@@ -167,5 +167,18 @@ spec:
 ## Cert-Manager high Level Architecture
  - Cert-manager operates by requiring administrators to create a Kubernetes resource called a "certificate issuer." This issuer resource is configured to work with the supported sources for obtaining certificates.The certificate issuer can be defined at either the global level within the cluster, meaning it applies to the entire cluster, or it can be scoped locally to a specific namespace where it is deployed.By defining the certificate issuer, administrators can specify the desired certificate source and its configuration, allowing cert-manager to automatically handle the process of obtaining and managing certificates from that source for the specified scope. This flexibility enables administrators to tailor the certificate management approach based on their specific requirements within the cluster or namespace.
 
+## Deploying Cert-manager
+ - To deploy cert-manager into your Kubernetes cluster, you can find the cert-manager Helm chart on Artifact Hub and follow the installation guide provided.       ![cu17](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/bab3fa47-30f2-4734-9729-cb2ba40ad834)
+ ## Certificate Issuer
+ - Next, is to create an Issuer. We will use a Cluster Issuer so that it can be scoped globally.
 
-       
+![ccii](https://github.com/busolagbadero/DEPLOYING-AND-PACKAGING-APPLICATIONS-INTO-KUBERNETES-WITH-HELM/assets/94229949/34c272e7-606f-4beb-98ca-8440880c33aa)
+
+
+### CONFIGURING INGRESS FOR TLS
+- To ensure that every created ingress also has TLS configured, we will need to update the ingress manifest with TLS specific configurations.
+
+
+
+
+
